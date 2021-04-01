@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -e
+
+echo "Verifying code is formatted via 'gofmt -s -w  go/'"
+gofmt -s -w  go/
+
+# git diff --exit-code --quiet
+
+echo "Building"
+script/build
+
+echo "Running unit tests"
+go test ./go/...
